@@ -1,0 +1,17 @@
+.sselect-wrap{
+    position: relative;
+}
+
+.sselect-box{
+    position: absolute;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.sselect-li{
+    list-style: none;
+}
+
+.sselect-li-noresults{
+    list-style: none;
+}
