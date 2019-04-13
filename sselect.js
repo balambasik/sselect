@@ -122,7 +122,7 @@
         // Events --------------------------------------------------------
 
         // search
-        $(this).on('input paste', function() {
+        $(this).on('input paste focus', function() {
             var query = $(this).val().trim();
             insertLi(query);
             settings.onInput(query);

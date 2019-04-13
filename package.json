@@ -1,14 +1,7 @@
 {
-  "name": "sselect",
-  "version": "1.0.0",
-  "description": "Input text field tips. jQuery plugin.",
-  "main": "sselect.js",
-  "scripts": {
+  "name": "@balambasik/sselect", "version": "1.0.0", "description": "Input text field tips. jQuery plugin.", "main": "sselect.js", "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
+  }, "keywords": [
     "input"
-  ],
-  "author": "balambasik@gmail.com",
-  "license": "MIT"
+  ], "author": "balambasik@gmail.com", "license": "MIT"
 }
