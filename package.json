@@ -1,0 +1,14 @@
+{
+  "name": "sselect",
+  "version": "1.0.0",
+  "description": "Input text field tips. jQuery plugin.",
+  "main": "sselect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "input"
+  ],
+  "author": "balambasik@gmail.com",
+  "license": "MIT"
+}
