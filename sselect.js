@@ -167,6 +167,7 @@
 
             setTimeout(function() {
                 $('.sselect-box').hide();
+                $(self).blur();
             });
 
             settings.onSelect(li_text);
