@@ -126,7 +126,7 @@
         // Events --------------------------------------------------------
 
         // search
-        $(this).on('input paste focus', function() {
+        $(this).on('input', function() {
             var query = $(this).val().trim();
             insertLi(query);
             settings.onInput(query);
@@ -168,3 +168,4 @@
     };
 
 }));
+
