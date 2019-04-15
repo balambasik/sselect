@@ -1,6 +1,5 @@
-# Sselect
-## Input text field tips. jQuery plugin.
-Drop-down list of hints for text input.
+# Sselect. Input text field tips. jQuery plugin.
+## Drop-down list of hints for text input.
 
 ## Install
 
