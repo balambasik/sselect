@@ -81,7 +81,7 @@
 
         function search(item, query) {
 
-            var query = settings.prepQuery(query.toLowerCase());
+            var query = query.toLowerCase();
             var ret = false;
 
             if (typeof item === "string") {
@@ -133,7 +133,8 @@
 
         // search
         $(this).on('input focus', function() {
-            var query = $(this).val().trim();
+            var query = settings.prepQuery($(this).val().trim());
+
             $('.sselect-box').show();
             insertLi(query);
             settings.onInput(query);
