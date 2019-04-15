@@ -30,11 +30,11 @@ TAGS:
 ```sh
 $('#input-tips').sselect({
     data: [],
-    placeholder: '',
+    placeholder: 'Placeholder',
     text_noresults: 'Not results',
-    prepLi: prepLi,
-    prepSelectedLi: prepSelectedLi,
-    prepQuery: prepQuery,
+    prepLi: function() {},
+    prepSelectedLi: function() {},
+    prepQuery: function() {},
     onInput: function() {},
     onSelect: function() {},
     onNoresults: function() {},
