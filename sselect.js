@@ -20,6 +20,7 @@
             text_noresults: 'Not results',
             prepLi: prepLi,
             prepSelectedLi: prepSelectedLi,
+            prepQuery: prepQuery,
             onInput: function() {},
             onSelect: function() {},
             onNoresults: function() {},
@@ -30,6 +31,11 @@
 
         if (options === 'setData') {
             settings.data = data;
+        }
+
+
+        function prepSearchText(text) {
+            return text;
         }
 
 
@@ -75,7 +81,7 @@
 
         function search(item, query) {
 
-            var query = query.toLowerCase();
+            var query = settings.prepQuery(query.toLowerCase());
             var ret = false;
 
             if (typeof item === "string") {
