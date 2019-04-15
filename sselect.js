@@ -128,6 +128,7 @@
         // search
         $(this).on('input focus', function() {
             var query = $(this).val().trim();
+            $('.sselect-box').show();
             insertLi(query);
             settings.onInput(query);
         });
