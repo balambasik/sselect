@@ -34,7 +34,7 @@
         }
 
 
-        function prepSearchText(text) {
+        function prepQuery(text) {
             return text;
         }
 
