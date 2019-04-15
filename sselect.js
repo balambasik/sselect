@@ -126,7 +126,7 @@
         // Events --------------------------------------------------------
 
         // search
-        $(this).on('input', function() {
+        $(this).on('input focus', function() {
             var query = $(this).val().trim();
             insertLi(query);
             settings.onInput(query);
