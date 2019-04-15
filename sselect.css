@@ -10,18 +10,24 @@
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.45);
     border-radius: 3px;
     background: #fff;
-    margin: 0;
+    margin-left: 0;
     box-sizing: border-box;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .sselect-li{
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 15px;
     background: #fff;
     list-style: none;
     cursor: pointer;
     color: #5A5A5A;
     transition: all .2s;
+    box-sizing: border-box;
+    font-weight: normal;
+    font-size: 14px;
+    
 }
 
 .sselect-li:hover{
@@ -34,4 +40,3 @@
     text-align: center;
     color: #D0D0D0;
 }
-
