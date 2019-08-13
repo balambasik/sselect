@@ -1,4 +1,4 @@
-(function(factory) {
+(function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD (Register as an anonymous module)
         define(['jquery'], factory);
@@ -9,8 +9,8 @@
         // Browser globals
         factory(jQuery);
     }
-}(function($) {
-    $.fn.sselect = function(options, data) {
+}(function ($) {
+    $.fn.sselect = function (options, data) {
 
         var self = this;
 
@@ -21,12 +21,21 @@
             prepLi: prepLi,
             prepSelectedLi: prepSelectedLi,
             prepQuery: prepQuery,
-            onInput: function() {},
-            onSelect: function() {},
-            onNoresults: function() {},
-            onShow: function() {},
-            onClose: function() {}
+            onInput: function () {
+            },
+            onSelect: function () {
+            },
+            onNoresults: function () {
+            },
+            onShow: function () {
+            },
+            onClose: function () {
+            }
         }, options);
+
+        if (typeof window.sselect_zindex === "undefined") {
+            window.sselect_zindex = 1000;
+        }
 
 
         if (options === 'setData') {
@@ -46,7 +55,15 @@
                 $(self).attr('placeholder', settings.placeholder);
             }
 
-            $(self).wrap("<div class='sselect-wrap'></div>");
+            var sselect_wrap = $("<div/>", {
+                class: "sselect-wrap",
+                css: {
+                    "z-index": window.sselect_zindex--
+                }
+            });
+
+
+            $(self).wrap(sselect_wrap);
         }
 
         function prepLi(item) {
@@ -67,16 +84,19 @@
             var input_w = $(self).outerWidth();
             var input_h = $(self).outerHeight();
 
-            $('.sselect-wrap').append('<ul class="sselect-box"></ul>');
-
-            $('.sselect-box').css({
-                position: 'absolute',
-                width: input_w + 'px',
-                top: input_h + 5 + 'px',
-                left: 0,
-                display: 'none',
-                margin: 0
+            var sselect_box = $("<ul/>", {
+                class: "sselect-box",
+                css: {
+                    position: 'absolute',
+                    width: input_w + 'px',
+                    top: input_h + 5 + 'px',
+                    left: 0,
+                    display: 'none',
+                    margin: 0
+                }
             });
+
+            $(self).parents('.sselect-wrap').append(sselect_box);
         }
 
         function search(item, query) {
@@ -90,7 +110,7 @@
             }
 
             // search from array
-            $.each(item, function(i, str) {
+            $.each(item, function (i, str) {
                 str = str.toLowerCase();
                 if (str.indexOf(query) !== -1) {
                     ret = true;
@@ -101,12 +121,12 @@
             return ret;
         }
 
-        function insertLi(query) {
+        function insertLi(query, el) {
 
             var query = query || '';
             var html = '';
 
-            $.each(settings.data, function(i, item) {
+            $.each(settings.data, function (i, item) {
 
                 if (!query) {
                     html += settings.prepLi(item);
@@ -116,9 +136,9 @@
             });
 
             if (html) {
-                $('.sselect-box').html(html);
+                $(self).parent().find('.sselect-box').html(html);
             } else {
-                $('.sselect-box').html('<li class="sselect-li-noresults">' + settings.text_noresults + '</li>');
+                $(self).parent().find('.sselect-box').html('<li class="sselect-li-noresults">' + settings.text_noresults + '</li>');
                 settings.onNoresults(query);
             }
         }
@@ -132,40 +152,40 @@
         // Events --------------------------------------------------------
 
         // search
-        $(this).on('input focus', function() {
+        $(this).on('input focus', function () {
             var query = settings.prepQuery($(this).val().trim());
 
-            $('.sselect-box').show();
-            insertLi(query);
+            $(this).parent().find('.sselect-box').show();
+            insertLi(query, this);
             settings.onInput(query);
         });
 
         // show
-        $(this).on('focus', function() {
-            $('.sselect-box').show();
+        $(this).on('focus', function () {
+            $(this).parent().find('.sselect-box').show();
             settings.onShow();
         });
 
 
         // hide
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             var block = $(".sselect-wrap");
 
             if (!block.is(e.target) && block.has(e.target).length === 0) {
                 $(".sselect-box").hide();
-                event.stopPropagation();
+                e.stopPropagation();
                 settings.onClose();
             }
         });
 
         // click li
-        $(document).on('click', '.sselect-li', function() {
+        $(document).on('click', '.sselect-li', function () {
 
             var li_text = settings.prepSelectedLi($(this));
 
-            $(self).val(li_text);
+            $(this).parents(".sselect-wrap").find("input").val(li_text);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.sselect-box').hide();
                 $(self).blur();
             });
