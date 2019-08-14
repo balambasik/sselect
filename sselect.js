@@ -34,7 +34,7 @@
         }, options);
 
         if (typeof window.sselect_zindex === "undefined") {
-            window.sselect_zindex = 1000;
+            window.sselect_zindex = 100000;
         }
 
 
